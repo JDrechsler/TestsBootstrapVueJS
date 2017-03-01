@@ -4,24 +4,31 @@
 
     <title>Test</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
     <div class="container" id="vue-app">
-        <pre>{{$data}}</pre>
+        <!--<pre>{{$data}}</pre>-->
 
         <div class="row">
             <div class="col-sm-12">
-                <h1>My Todos</h1>
-                <ul class="list-group-item" v-for="todo in todos">
-                    {{todo.title}}
-                    <button class="btn btn-warning btn-xs pull-right" @click="deleteTodo(todo)">Delete</button>
+                <h1>My Todos: {{todoCount}}</h1>
+                <ul class="list-group" v-if="todos.length > 0">
+                    <li class="list-group-item" v-bind:class="{'completed' : todo.completed}" v-for="todo in todos">
+                        {{todo.title}}
+                        <button class="btn btn-warning btn-xs pull-right" @click="deleteTodo(todo)">Delete</button>
+                        <button class="btn btn-xs pull-right margin-right-5" v-bind:class="{'btn-success' : todo.completed, 'btn-danger' : !todo.completed}" @click="todoCompleted(todo)">{{todo.completed ? 'Completed' : 'Pending'}}</button>
+                    </li>
                 </ul>
+                <div v-else>
+                    <p>You don't have any todos</p>
+                </div>
             </div>
         </div>
 
-        <br>
+
 
         <div class="row">
             <div class="col-sm-12">

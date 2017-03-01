@@ -1,0 +1,10 @@
+li.completed{
+    text-decoration: line-through;
+}
+.margin-right-10{
+    margin-right: 10px;
+}
+
+.margin-right-5{
+    margin-right: 5px;
+}
