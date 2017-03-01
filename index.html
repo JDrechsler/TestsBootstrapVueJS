@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Test</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css' />
+</head>
+
+<body>
+
+    <div class="container" id="vue-app">
+        <pre>{{$data}}</pre>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>My Todos</h1>
+                <ul class="list-group-item" v-for="todo in todos">
+                    {{todo.title}}
+                    <button class="btn btn-warning btn-xs pull-right" @click="deleteTodo(todo)">Delete</button>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <form v-on:submit.prevent="addNewTodo(newTodo)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Add new Todo" v-model="newTodo.title">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-success">Add Todo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.js'></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
